@@ -1,0 +1,1127 @@
+:root {
+  --primary-color: #4e73df;
+  --primary-light: rgba(71, 118, 230, 0.1);
+  --secondary-color: #1cc88a;
+  --secondary-light: rgba(142, 84, 233, 0.1);
+  --text-color: #333333;
+  --light-text: #666;
+  --bg-color: #f8f9fc;
+  --light-bg: #f5f5f5;
+  --card-bg: #ffffff;
+  --border-color: #e3e6f0;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  --error-color: #e74a3b;
+  --success-color: #1cc88a;
+  --export-color: #3498db;
+  --import-color: #2ecc71;
+  --primary-gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --btn-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  --tooltip-bg: rgba(0, 0, 0, 0.8);
+  --tooltip-text: #ffffff;
+  --tooltip-border: rgba(255, 255, 255, 0.1);
+  --tooltip-link: #add8e6;
+  --tooltip-link-hover: #d1ecff;
+  --chart-color-1: #4e73df;
+  --chart-color-2: #1cc88a;
+  --chart-color-3: #3498db;
+  --chart-color-4: #2ecc71;
+  --chart-bg: rgba(255, 255, 255, 0.9);
+  --hover-color: #eaecf4;
+  --header-bg: #f8f9fc;
+  --footer-bg: #f8f9fc;
+  --icon-color: #4e73df;
+  --progress-bar-color: #4e73df;
+}
+
+/* متغيرات الوضع المظلم */
+[data-theme="dark"] {
+  --primary-color: #6D8EF7;
+  --primary-light: rgba(109, 142, 247, 0.15);
+  --secondary-color: #B174FF;
+  --secondary-light: rgba(177, 116, 255, 0.15);
+  --text-color: #e0e0e0;
+  --light-text: #b0b0b0;
+  --bg-color: #1a1a1a;
+  --light-bg: #2a2a2a;
+  --card-bg: #2c2c2c;
+  --border-color: #444;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --error-color: #ff6b8b;
+  --success-color: #4cda8a;
+  --export-color: #5aafeb;
+  --import-color: #5eeea0;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  --btn-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  --tooltip-bg: rgba(40, 40, 40, 0.98);
+  --tooltip-text: #f0f0f0;
+  --tooltip-border: rgba(255, 255, 255, 0.15);
+  --tooltip-link: #8cd9ff;
+  --tooltip-link-hover: #b8e6ff;
+  --chart-color-1: #6D8EF7;
+  --chart-color-2: #B174FF;
+  --chart-color-3: #5aafeb;
+  --chart-color-4: #5eeea0;
+  --chart-bg: rgba(42, 42, 42, 0.95);
+}
+
+/* التبديل التلقائي إلى الوضع المظلم إذا كان متصفح المستخدم يفضله */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --primary-color: #6D8EF7;
+    --primary-light: rgba(109, 142, 247, 0.15);
+    --secondary-color: #B174FF;
+    --secondary-light: rgba(177, 116, 255, 0.15);
+    --text-color: #e0e0e0;
+    --light-text: #b0b0b0;
+    --bg-color: #1a1a1a;
+    --light-bg: #2a2a2a;
+    --card-bg: #2c2c2c;
+    --border-color: #444;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --error-color: #ff6b8b;
+    --success-color: #4cda8a;
+    --export-color: #5aafeb;
+    --import-color: #5eeea0;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    --btn-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    --tooltip-bg: rgba(40, 40, 40, 0.98);
+    --tooltip-text: #f0f0f0;
+    --tooltip-border: rgba(255, 255, 255, 0.15);
+    --tooltip-link: #8cd9ff;
+    --tooltip-link-hover: #b8e6ff;
+    --chart-color-1: #6D8EF7;
+    --chart-color-2: #B174FF;
+    --chart-color-3: #5aafeb;
+    --chart-color-4: #5eeea0;
+    --chart-bg: rgba(42, 42, 42, 0.95);
+  }
+}
+
+/* تعديل التلميحات لاستخدام المتغيرات */
+.tooltip .tooltiptext {
+  background-color: var(--tooltip-bg);
+  color: var(--tooltip-text);
+  border: 1px solid var(--tooltip-border);
+}
+
+.tooltip .tooltiptext a {
+  color: var(--tooltip-link);
+}
+
+.tooltip .tooltiptext a:hover {
+  color: var(--tooltip-link-hover);
+}
+
+/* إضافة أنيميشن عند التبديل بين الأوضاع */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* أنيميشن عند تحميل الصفحة */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header-text, .tabs, .api-section, .settings-section, .features-section, .export-import-section {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.header-text {
+  animation-delay: 0.1s;
+}
+
+.tabs {
+  animation-delay: 0.2s;
+}
+
+.api-section {
+  animation-delay: 0.3s;
+}
+
+.settings-section {
+  animation-delay: 0.4s;
+}
+
+.features-section {
+  animation-delay: 0.5s;
+}
+
+.export-import-section {
+  animation-delay: 0.6s;
+}
+
+/* أنيميشن للأزرار عند الضغط */
+.save-btn, .action-btn, .tab-btn, .welcome-btn {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.save-btn:active, .action-btn:active, .welcome-btn:active {
+  transform: scale(0.96);
+}
+
+/* كود CSS للرسوم البيانية والإحصائيات */
+.stats-container {
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.stats-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+.stats-period {
+  font-size: 0.8rem;
+  color: var(--light-text);
+}
+
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: var(--light-bg);
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--light-text);
+}
+
+.chart-container {
+  height: 150px;
+  width: 100%;
+  position: relative;
+  margin-bottom: 10px;
+  background-color: var(--chart-bg);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+/* حاوية شريط التقدم */
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: var(--light-bg);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 15px 0;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--primary-gradient);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+  width: 0;
+}
+
+/* تحسين شاشة الترحيب */
+.welcome-step-progress {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--border-color);
+  margin: 0 5px;
+  transition: all 0.3s ease;
+}
+
+.step-dot.active {
+  background-color: var(--secondary-color);
+  transform: scale(1.5);
+}
+
+.welcome-illustration {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+/* زر تبديل الوضع المظلم */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+
+.theme-toggle:hover {
+  transform: rotate(30deg);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Tajawal', 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  direction: rtl;
+}
+
+body {
+  width: 400px;
+  min-height: 500px;
+  padding: 20px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 15px;
+}
+
+header img {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  transform: rotate(0);
+  transition: transform 0.3s ease;
+}
+
+header img:hover {
+  transform: rotate(5deg);
+}
+
+.header-text h1 {
+  font-size: 1.5rem;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.header-text p {
+  font-size: 0.85rem;
+  color: var(--light-text);
+}
+
+/* تحسين البطاقات */
+.api-section, .settings-section, .features-section, .export-import-section {
+  background-color: var(--card-bg);
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.api-section:hover, .settings-section:hover, .features-section:hover, .export-import-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.api-section h2, .settings-section h2, .features-section h2, .export-import-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 18px;
+  color: var(--secondary-color);
+  position: relative;
+  display: inline-block;
+}
+
+.api-section h2:after, .settings-section h2:after, .features-section h2:after, .export-import-section h2:after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  width: 40%;
+  height: 3px;
+  background: var(--primary-gradient);
+  border-radius: 2px;
+}
+
+.select-container {
+  margin-bottom: 15px;
+}
+
+.select-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.select-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background-color: var(--bg-color);
+  direction: rtl;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.select-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-light);
+  outline: none;
+}
+
+.select-input option:disabled {
+  color: var(--light-text);
+  font-style: italic;
+}
+
+.api-key-container {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+#apiKeyInput {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  direction: ltr;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+#apiKeyInput:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 2px var(--secondary-light);
+}
+
+.toggle-view {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--light-text);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.toggle-view:hover {
+  color: var(--secondary-color);
+  transform: scale(1.1);
+}
+
+/* زر حفظ مع رسوم متحركة */
+.save-btn {
+  width: 100%;
+  padding: 12px 0;
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 0.5s ease;
+  position: relative;
+  overflow: hidden;
+  background-size: 200% auto;
+}
+
+.save-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--btn-shadow);
+  background-position: right center;
+}
+
+.save-btn:active {
+  transform: translateY(0);
+}
+
+.save-btn.loading {
+  pointer-events: none;
+}
+
+.save-btn.loading .spinner {
+  display: inline-block;
+}
+
+.spinner {
+  display: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  margin-top: -10px;
+  margin-right: -10px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.settings-section {
+  padding-bottom: 15px;
+}
+
+.setting-item {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.setting-item:hover {
+  background-color: var(--light-bg);
+}
+
+.setting-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  width: 100%;
+}
+
+.setting-label input[type="checkbox"] {
+  margin-left: 10px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--secondary-color);
+  transition: all 0.2s ease;
+}
+
+.setting-label span {
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.setting-label:hover span {
+  color: var(--primary-color);
+}
+
+.number-input {
+  width: 80px;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin-right: 8px;
+  text-align: center;
+  transition: border-color 0.3s;
+}
+
+.number-input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.features-section {
+  margin-bottom: 20px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 12px;
+  background-color: var(--bg-color);
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid transparent;
+}
+
+.feature-item:hover {
+  transform: translateX(-5px);
+  box-shadow: 0 4px 8px var(--shadow-color);
+  border-color: var(--border-color);
+}
+
+.feature-icon {
+  margin-left: 14px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-gradient);
+  color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.feature-item:hover .feature-icon {
+  transform: rotate(10deg);
+}
+
+.feature-text {
+  flex: 1;
+}
+
+.feature-text h3 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.feature-text p {
+  font-size: 0.85rem;
+  color: var(--light-text);
+}
+
+.export-import-section {
+  margin-bottom: 15px;
+}
+
+.export-import-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 12px 0;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.action-btn:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.3s ease;
+}
+
+.action-btn:hover:after {
+  left: 100%;
+}
+
+.export-btn {
+  background-color: var(--export-color);
+}
+
+.import-btn {
+  background-color: var(--import-color);
+}
+
+.action-btn i {
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--btn-shadow);
+}
+
+.action-btn:hover i {
+  transform: scale(1.2);
+}
+
+.action-btn:active {
+  transform: translateY(0);
+}
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--light-text);
+  padding-top: 15px;
+}
+
+/* تحسين رسائل الحالة */
+.status-message {
+  display: block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  max-width: 100%;
+}
+
+.status-message.fade-out {
+  opacity: 0;
+}
+
+.status-message.success {
+  background-color: var(--success-color);
+  color: white;
+  animation: pulse 1s;
+}
+
+.status-message.error {
+  background-color: var(--error-color);
+  color: white;
+  animation: pulse 1s;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.loading {
+  animation: pulse 1.5s infinite;
+}
+
+/* تحسين نظام التلميحات - طريقة جديدة تمامًا */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  margin-bottom: 10px;
+}
+
+.tooltip i {
+  color: var(--secondary-color);
+  transition: transform 0.3s ease;
+}
+
+.tooltip:hover i {
+  transform: scale(1.1);
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 320px;
+  background-color: rgba(34, 34, 34, 0.98);
+  color: #fff;
+  text-align: right;
+  border-radius: 8px;
+  padding: 15px;
+  /* تغيير طريقة وضع التلميح تمامًا */
+  position: fixed;
+  z-index: 9999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  pointer-events: none;
+  overflow: visible;
+  word-wrap: break-word;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+
+.tooltip .tooltiptext a {
+  color: #add8e6;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.tooltip .tooltiptext a:hover {
+  text-decoration: underline;
+  color: #d1ecff;
+}
+
+/* تنسيق إضافي للتلميحات */
+.tooltip-api, .tooltip-setting {
+  width: 320px;
+  max-width: 95vw;
+}
+
+/* تعديلات اللغة الإنجليزية */
+html[lang="en"] .tooltip .tooltiptext {
+  text-align: left;
+  direction: ltr;
+}
+
+/* تحسين نظام علامات التبويب */
+.tabs-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--light-bg);
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.tab-btn {
+  padding: 10px 15px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  color: var(--text-color);
+  font-family: 'Cairo', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  text-align: center;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.tab-btn:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 0;
+  background: var(--primary-light);
+  transition: height 0.3s ease;
+  z-index: -1;
+  border-radius: 8px;
+}
+
+.tab-btn:hover:before {
+  height: 100%;
+}
+
+.tab-btn i {
+  margin-left: 5px;
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+.tab-btn:hover i {
+  transform: translateY(-2px);
+}
+
+.tab-btn:hover {
+  color: var(--primary-color);
+}
+
+.tab-btn.active {
+  color: white;
+  background: var(--primary-gradient);
+  box-shadow: var(--btn-shadow);
+}
+
+.tab-btn.active:before {
+  height: 0;
+}
+
+.tab-btn.active i {
+  transform: none;
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* للشاشة الترحيبية */
+.welcome-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.welcome-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.welcome-card {
+  background-color: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 350px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transform: scale(0.9);
+  transition: transform 0.5s ease;
+}
+
+.welcome-overlay.active .welcome-card {
+  transform: scale(1);
+}
+
+.welcome-header {
+  margin-bottom: 20px;
+}
+
+.welcome-header img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.welcome-header h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.welcome-content {
+  margin-bottom: 25px;
+}
+
+.welcome-steps {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.welcome-step {
+  display: flex;
+  margin-bottom: 15px;
+  align-items: flex-start;
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.welcome-overlay.active .welcome-step {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.welcome-overlay.active .welcome-step:nth-child(1) {
+  transition-delay: 0.2s;
+}
+
+.welcome-overlay.active .welcome-step:nth-child(2) {
+  transition-delay: 0.4s;
+}
+
+.welcome-overlay.active .welcome-step:nth-child(3) {
+  transition-delay: 0.6s;
+}
+
+.step-number {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--primary-gradient);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  flex-shrink: 0;
+}
+
+.step-text {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.welcome-btn {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.welcome-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--btn-shadow);
+}
+
+/* زر التراجع في الإشعارات (سيتم استخدامه في content.js) */
+.notification-actions {
+  display: flex;
+  margin-top: 8px;
+  justify-content: center;
+  gap: 8px;
+}
+
+.notification-btn {
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.undo-btn {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.undo-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.dismiss-btn {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.dismiss-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ضبط تبديل اللغة */
+.language-toggle {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.language-toggle:hover {
+  background-color: var(--light-bg);
+}
+
+.language-toggle i {
+  margin-left: 4px;
+}
+
+@media (max-width: 500px) {
+  .tabs {
+    flex-direction: row;
+  }
+  
+  .tab-btn {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+  
+  .tab-btn i {
+    font-size: 12px;
+  }
+} 
