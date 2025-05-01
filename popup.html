@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto-Inputs-Pro</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Cairo:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/popup.css">
+  <script src="js/lib/chart.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="assets/icons/icon48.png" alt="Auto-Inputs-Pro">
+      <div class="header-text">
+        <h1 class="translated" data-key="appName">Auto-Inputs-Pro</h1>
+        <p class="translated" data-key="appDescription">ملء الحقول تلقائيًا بذكاء اصطناعي متطور</p>
+      </div>
+      <div class="header-controls">
+        <button class="theme-toggle" id="themeToggle">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="language-toggle" id="languageToggle">
+          <i class="fa-solid fa-globe"></i> <span class="lang-text">EN</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="tabs-container">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="api-settings">
+          <i class="fa-solid fa-key"></i> <span class="translated" data-key="tabs.apiSettings">إعدادات API</span>
+        </button>
+        <button class="tab-btn" data-tab="general-settings">
+          <i class="fa-solid fa-gear"></i> <span class="translated" data-key="tabs.generalSettings">إعدادات عامة</span>
+        </button>
+        <button class="tab-btn" data-tab="features">
+          <i class="fa-solid fa-star"></i> <span class="translated" data-key="tabs.features">المميزات</span>
+        </button>
+        <button class="tab-btn" data-tab="stats">
+          <i class="fa-solid fa-chart-simple"></i> <span class="translated" data-key="tabs.stats">الإحصائيات</span>
+        </button>
+        <button class="tab-btn" data-tab="backup">
+          <i class="fa-solid fa-download"></i> <span class="translated" data-key="tabs.backup">النسخ الاحتياطي</span>
+        </button>
+      </div>
+
+      <div class="tab-content active" id="api-settings">
+        <section class="api-section">
+          <h2 class="translated" data-key="apiSettings.title">إعداد الذكاء الاصطناعي</h2>
+          
+          <div class="select-container">
+            <label for="aiModelSelect" class="translated" data-key="apiSettings.selectModel">اختر نموذج الذكاء الاصطناعي:</label>
+            <select id="aiModelSelect" class="select-input">
+              <option value="gemini" class="translated" data-key="apiSettings.models.gemini">Google Gemini</option>
+              <option value="openai" disabled class="translated" data-key="apiSettings.models.openai">OpenAI (قريباً)</option>
+              <option value="anthropic" disabled class="translated" data-key="apiSettings.models.anthropic">Anthropic Claude (قريباً)</option>
+            </select>
+          </div>
+          
+          <div class="api-key-container">
+            <input type="password" id="apiKeyInput" placeholder="" class="translated-attr" data-attr="placeholder" data-key="apiSettings.apiKeyPlaceholder">
+            <button class="toggle-view" id="toggleView">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+          <div class="tooltip">
+            <i class="fa-solid fa-circle-info"></i>
+            <span class="tooltiptext tooltip-api">
+              <span class="translated" data-key="apiSettings.geminiApiKeyTooltip">يمكنك الحصول على مفتاح API من موقع Google AI Studio للوصول إلى نماذج Gemini.</span>
+              <br><br>
+              <a href="https://aistudio.google.com/app/apikey" target="_blank">
+                <span class="translated" data-key="apiSettings.getApiKey">احصل على مفتاح Gemini</span> 
+                <i class="fa-solid fa-external-link-alt"></i>
+              </a>
+            </span>
+          </div>
+          <button class="save-btn" id="saveApiKey">
+            <span class="translated" data-key="apiSettings.saveButton">حفظ المفتاح</span>
+            <span class="spinner"></span>
+          </button>
+          <div class="status-message" id="statusMessage"></div>
+        </section>
+      </div>
+
+      <div class="tab-content" id="general-settings">
+        <section class="settings-section">
+          <h2 class="translated" data-key="generalSettings.title">إعدادات إضافية</h2>
+          <div class="setting-item">
+            <label class="setting-label">
+              <input type="checkbox" id="autoSubmitForms">
+              <span class="translated" data-key="generalSettings.autoSubmit">تقديم النماذج تلقائيًا بعد الملء</span>
+            </label>
+            <div class="tooltip">
+              <i class="fa-solid fa-circle-info"></i>
+              <span class="tooltiptext tooltip-setting">
+                <span class="translated" data-key="generalSettings.autoSubmitTooltip">عند تفعيل هذا الخيار، سيقوم الامتداد بالضغط تلقائياً على زر الإرسال بعد ملء جميع الحقول في النموذج</span>
+              </span>
+            </div>
+          </div>
+          <div class="setting-item">
+            <label class="setting-label">
+              <input type="checkbox" id="showNotificationsOnPage">
+              <span class="translated" data-key="generalSettings.showNotifications">عرض إشعارات على صفحة الويب</span>
+            </label>
+            <div class="tooltip">
+              <i class="fa-solid fa-circle-info"></i>
+              <span class="tooltiptext tooltip-setting">
+                <span class="translated" data-key="generalSettings.showNotificationsTooltip">تظهر إشعارات على صفحة الويب لإبلاغك بحالة الملء وتقدمه</span>
+              </span>
+            </div>
+          </div>
+          <div class="setting-item">
+            <label class="setting-label" for="formFillDelay">
+              <span class="translated" data-key="generalSettings.formFillDelay">تأخير بين ملء الحقول (مللي ثانية):</span>
+            </label>
+            <input type="number" id="formFillDelay" min="0" max="1000" step="50" value="100" class="number-input">
+            <div class="tooltip">
+              <i class="fa-solid fa-circle-info"></i>
+              <span class="tooltiptext tooltip-setting">
+                <span class="translated" data-key="generalSettings.formFillDelayTooltip">تخصيص الوقت بين ملء كل حقل والآخر، مما يجعل الملء يبدو أكثر طبيعية</span>
+              </span>
+            </div>
+          </div>
+          
+          <!-- إضافة إعدادات متقدمة للمواقع -->
+          <div class="advanced-section">
+            <h3 class="translated" data-key="generalSettings.advancedTitle">إعدادات متقدمة للمواقع</h3>
+            <div class="setting-item">
+              <label class="setting-label">
+                <input type="checkbox" id="enableAdvancedSiteSupport">
+                <span class="translated" data-key="generalSettings.enableAdvancedSites">تفعيل الدعم المتقدم للمواقع الشائعة</span>
+              </label>
+            </div>
+            <div class="site-support-options">
+              <div class="site-option">
+                <label>
+                  <input type="checkbox" name="supportedSites" value="linkedin">
+                  <span>LinkedIn</span>
+                </label>
+              </div>
+              <div class="site-option">
+                <label>
+                  <input type="checkbox" name="supportedSites" value="indeed">
+                  <span>Indeed</span>
+                </label>
+              </div>
+              <div class="site-option">
+                <label>
+                  <input type="checkbox" name="supportedSites" value="twitter">
+                  <span>Twitter/X</span>
+                </label>
+              </div>
+              <div class="site-option">
+                <label>
+                  <input type="checkbox" name="supportedSites" value="facebook">
+                  <span>Facebook</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="tab-content" id="features">
+        <section class="features-section">
+          <h2 class="translated" data-key="features.title">مميزات الامتداد</h2>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="fa-solid fa-list-check"></i>
+            </div>
+            <div class="feature-text">
+              <h3 class="translated" data-key="features.fillAllInputs.title">ملء جميع الحقول</h3>
+              <p class="translated" data-key="features.fillAllInputs.description">اضغط بزر الماوس الأيمن في أي مكان بالصفحة واختر "Fill All Inputs"</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="fa-solid fa-file-lines"></i>
+            </div>
+            <div class="feature-text">
+              <h3 class="translated" data-key="features.fillForm.title">ملء النموذج الحالي</h3>
+              <p class="translated" data-key="features.fillForm.description">اضغط بزر الماوس الأيمن على أي حقل واختر "Fill This Form"</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="fa-solid fa-keyboard"></i>
+            </div>
+            <div class="feature-text">
+              <h3 class="translated" data-key="features.fillInput.title">ملء حقل واحد</h3>
+              <p class="translated" data-key="features.fillInput.description">اضغط بزر الماوس الأيمن على الحقل الذي تريد ملئه واختر "Fill This Input"</p>
+            </div>
+          </div>
+        </section>
+      </div>
+      
+      <!-- قسم الإحصائيات الجديد -->
+      <div class="tab-content" id="stats">
+        <section class="stats-container">
+          <div class="stats-header">
+            <h2 class="stats-title translated" data-key="stats.title">إحصائيات الاستخدام</h2>
+            <span class="stats-period translated" data-key="stats.period">آخر 30 يوم</span>
+          </div>
+          
+          <div class="stats-cards">
+            <div class="stat-card">
+              <div class="stat-value" id="totalInputsFilled">0</div>
+              <div class="stat-label translated" data-key="stats.totalInputs">حقول تم ملؤها</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="totalForms">0</div>
+              <div class="stat-label translated" data-key="stats.totalForms">نماذج مكتملة</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="successRate">0%</div>
+              <div class="stat-label translated" data-key="stats.successRate">معدل النجاح</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="timeSaved">0</div>
+              <div class="stat-label translated" data-key="stats.timeSaved">دقائق تم توفيرها</div>
+            </div>
+          </div>
+          
+          <div class="chart-container">
+            <canvas id="usageChart" width="400" height="200"></canvas>
+          </div>
+          
+          <div class="progress-stats">
+            <div class="progress-label">
+              <span class="translated" data-key="stats.completionRate">معدل إكمال الحقول: </span>
+              <span id="completionRateValue">75%</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar" style="width: 75%;"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="tab-content" id="backup">
+        <section class="export-import-section">
+          <h2 class="translated" data-key="backup.title">نسخ احتياطي للإعدادات</h2>
+          <div class="export-import-buttons">
+            <button id="exportSettings" class="action-btn export-btn">
+              <i class="fa-solid fa-file-export"></i> <span class="translated" data-key="backup.export">تصدير الإعدادات</span>
+            </button>
+            <button id="importSettings" class="action-btn import-btn">
+              <i class="fa-solid fa-file-import"></i> <span class="translated" data-key="backup.import">استيراد الإعدادات</span>
+            </button>
+          </div>
+          <input type="file" id="importSettingsFile" accept=".json" style="display: none;">
+        </section>
+      </div>
+    </div>
+
+    <footer>
+      <p class="translated" data-key="footer">تطوير شركة RebixRise © 2025</p>
+    </footer>
+  </div>
+  
+  <!-- شاشة الترحيب المحسنة -->
+  <div class="welcome-overlay" id="welcomeOverlay">
+    <div class="welcome-card">
+      <div class="welcome-header">
+        <img src="assets/icons/icon128.png" alt="Auto-Inputs-Pro" class="welcome-illustration">
+        <h2 class="translated" data-key="welcome.title">مرحبًا بك في Auto-Inputs-Pro</h2>
+        <p class="translated" data-key="welcome.subtitle">شكراً لتثبيت الإضافة! دعنا نبدأ باستخدامها</p>
+      </div>
+      
+      <!-- مؤشر الخطوات -->
+      <div class="welcome-step-progress">
+        <div class="step-dot active" data-step="1"></div>
+        <div class="step-dot" data-step="2"></div>
+        <div class="step-dot" data-step="3"></div>
+      </div>
+      
+      <div class="welcome-content">
+        <div class="welcome-steps">
+          <div class="welcome-step active" data-step="1">
+            <div class="step-number">1</div>
+            <div class="step-text translated" data-key="welcome.step1">قم بالحصول على مفتاح API من Google Gemini وإضافته في إعدادات API</div>
+          </div>
+          <div class="welcome-step" data-step="2">
+            <div class="step-number">2</div>
+            <div class="step-text translated" data-key="welcome.step2">أضف الامتداد إلى قائمة السياق (النقر بزر الماوس الأيمن) من إعدادات المتصفح</div>
+          </div>
+          <div class="welcome-step" data-step="3">
+            <div class="step-number">3</div>
+            <div class="step-text translated" data-key="welcome.step3">انقر بزر الماوس الأيمن على أي نموذج واختر "Fill This Form" لملئه تلقائيًا</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="welcome-navigation">
+        <button id="welcomePrevBtn" class="welcome-nav-btn" disabled>
+          <i class="fa-solid fa-arrow-left"></i> <span class="translated" data-key="welcome.prevButton">السابق</span>
+        </button>
+        <button id="welcomeNextBtn" class="welcome-nav-btn">
+          <span class="translated" data-key="welcome.nextButton">التالي</span> <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        <button id="welcomeCloseBtn" class="welcome-btn translated" data-key="welcome.startButton" style="display: none;">ابدأ الاستخدام</button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="js/translations.js" defer></script>
+  <script src="js/stats.js" defer></script>
+  <script src="js/popup.js" defer></script>
+</body>
+</html> 
